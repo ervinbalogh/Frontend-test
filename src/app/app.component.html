@@ -1,1 +1,49 @@
-<mat-toolbar>{{title}}</mat-toolbar>
+<div class="title-container">{{title}}</div>
+
+
+<form [formGroup]="form" class="form-container">
+  <div>
+    <mat-form-field appearance="legacy">
+      <mat-label>Search Character</mat-label>
+      <input matInput formControlName="searchTerm" placeholder="Placeholder">
+    </mat-form-field>
+  </div>
+  <div>
+    <button mat-stroked-button (click)="search()">Search Character</button>
+  </div>
+
+</form>
+
+<div class="pagination-container">Showing {{swapiService.getActualResults()?.length}} result
+  of {{swapiService.getCount()}}</div>
+
+<div class="sort-container">
+  <form [formGroup]="form">
+    <mat-form-field appearance="fill">
+      <mat-label>Szűrés</mat-label>
+      <mat-select (selectionChange)="onChange($event.value)" formControlName="sortBy">
+        <mat-option value="asc">
+          A-Z
+        </mat-option>
+        <mat-option value="desc">
+          Z-A
+        </mat-option>
+        <mat-option value="male">
+          Male
+        </mat-option>
+        <mat-option value="female">
+          Female
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </form>
+</div>
+
+<div id="dc" fxLayout="row wrap" fxLayoutAlign="center">
+  <app-card *ngFor="let sw of swapiService.getActualResults(); let i = index" [name]="sw.name" [index]="i">
+  </app-card>
+</div>
+
+<div class="load-more-btn">
+  <button mat-stroked-button (click)="loadMore()">Load More</button>
+</div>

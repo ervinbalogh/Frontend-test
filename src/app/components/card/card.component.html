@@ -1,0 +1,7 @@
+<mat-card class="card" xmlns="">
+  <mat-card-content>
+    <img mat-card-image [src]="index % 2 == 0 ? '/assets/mock-image-1.png' : '/assets/mock-image.png'"
+         [alt]="index % 2 == 0 ? 'mock-image-1' : 'mock-image'">
+  </mat-card-content>
+  <mat-card-title>{{name}}</mat-card-title>
+</mat-card>
