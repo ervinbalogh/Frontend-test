@@ -1,0 +1,13 @@
+.card {
+  max-width: 300px;
+}
+
+mat-card-content img {
+  width: calc(100% - 4px);
+  margin: 2px;
+}
+
+mat-card-title {
+  text-align: center;
+}
+
